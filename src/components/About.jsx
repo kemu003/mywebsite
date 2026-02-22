@@ -1,8 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { Download, Award, Users, Coffee } from 'lucide-react';
+import { Download, Award, GraduationCap, Code2, BrainCircuit } from 'lucide-react';
 
+// ============================
+// 💅 Styled Components
+// ============================
 const AboutSection = styled.section`
   padding: 80px 0;
   background: #f8fafc;
@@ -14,29 +17,30 @@ const Container = styled.div`
   padding: 0 20px;
 `;
 
+const SectionHeader = styled(motion.div)`
+  text-align: center;
+  margin-bottom: 4rem;
+`;
+
 const SectionTitle = styled.h2`
   font-size: 2.5rem;
   font-weight: 700;
-  text-align: center;
-  margin-bottom: 1rem;
   color: #1f2937;
+  margin-bottom: 1rem;
 `;
 
 const SectionSubtitle = styled.p`
-  text-align: center;
   color: #6b7280;
   font-size: 1.1rem;
-  margin-bottom: 4rem;
   max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
 `;
 
 const AboutContent = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
-  align-items: center;
+  align-items: start;
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
@@ -48,7 +52,7 @@ const AboutText = styled.div`
   h3 {
     font-size: 1.8rem;
     font-weight: 600;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     color: #1f2937;
   }
 
@@ -59,62 +63,53 @@ const AboutText = styled.div`
   }
 `;
 
-const Skills = styled.div`
+const SkillsWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 2rem;
+  gap: 0.75rem;
+  margin: 2rem 0;
 `;
 
-const Skill = styled.span`
+const SkillBadge = styled.span`
   background: #6366f1;
   color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  font-size: 0.9rem;
+  padding: 0.5rem 1.2rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
   font-weight: 500;
+  box-shadow: 0 2px 4px rgba(99, 102, 241, 0.2);
 `;
 
-const DownloadButton = styled.button`
+const DownloadButton = styled(motion.a)`
   background: #6366f1;
   color: white;
-  border: none;
-  padding: 12px 24px;
+  text-decoration: none;
+  padding: 14px 28px;
   border-radius: 8px;
   font-weight: 600;
-  cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  transition: all 0.3s ease;
+  gap: 0.75rem;
+  cursor: pointer;
 
   &:hover {
     background: #4f46e5;
-    transform: translateY(-2px);
   }
 `;
 
-const StatsContainer = styled.div`
+const StatsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
-
-  @media (max-width: 480px) {
-    grid-template-columns: 1fr;
-  }
+  gap: 1.5rem;
 `;
 
-const StatCard = styled.div`
+const StatCard = styled(motion.div)`
   background: white;
   padding: 2rem;
-  border-radius: 12px;
+  border-radius: 16px;
   text-align: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease;
-
-  &:hover {
-    transform: translateY(-5px);
-  }
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f1f5f9;
 `;
 
 const StatIcon = styled.div`
@@ -127,91 +122,100 @@ const StatIcon = styled.div`
 const StatNumber = styled.h4`
   font-size: 2rem;
   font-weight: 700;
-  color: #1f2937;
-  margin-bottom: 0.5rem;
+  color: #111827;
+  margin-bottom: 0.25rem;
 `;
 
 const StatLabel = styled.p`
   color: #6b7280;
+  font-size: 0.9rem;
   font-weight: 500;
 `;
 
+// ============================
+// 🚀 Main Component
+// ============================
 const About = () => {
   const skills = [
-    'React', 'Node.js', 'JavaScript', 'TypeScript', 'Python', 
-    'MongoDB', 'PostgreSQL', 'AWS', 'Docker', 'Git'
+    'Python', 'Django', 'React.js', 'Machine Learning', 
+    'Pandas', 'SQL', 'Git', 'Data Analysis'
   ];
 
   const stats = [
-    { icon: <Award size={32} />, number: '50+', label: 'Projects Completed' },
-    { icon: <Users size={32} />, number: '30+', label: 'Happy Clients' },
-    { icon: <Coffee size={32} />, number: '1000+', label: 'Cups of Coffee' },
-    { icon: <Award size={32} />, number: '2+', label: 'Years Experience' }
+    { icon: <GraduationCap size={32} />, number: '2025', label: 'LU Graduate' },
+    { icon: <BrainCircuit size={32} />, number: '2', label: 'ML Deployments' },
+    { icon: <Code2 size={32} />, number: '15+', label: 'Projects' },
+    { icon: <Award size={32} />, number: '1', label: 'ICT Internship' }
   ];
 
   return (
     <AboutSection id="about">
       <Container>
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
+        <SectionHeader
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
           <SectionTitle>About Me</SectionTitle>
           <SectionSubtitle>
-            Passionate developer with a love for creating innovative solutions
+            A Computer Science graduate dedicated to building intelligent, data-driven solutions.
           </SectionSubtitle>
-        </motion.div>
+        </SectionHeader>
 
         <AboutContent>
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
             <AboutText>
-              <h3>Hi there! I'm Kevin Mutai</h3>
+              <h3>Hi, I'm Kevin Mutai</h3>
               <p>
-                I'm a passionate Full Stack Developer with over 3 years of experience 
-                creating digital solutions that make a difference. I specialize in 
-                building scalable web applications using modern technologies.
+                I am a 2025 Computer Science graduate from **Laikipia University**. My expertise lies at the intersection of **Software Engineering** and **Data Science**, where I build applications that are not only functional but also intelligent.
               </p>
               <p>
-                When I'm not coding, you'll find me exploring new technologies, 
-                contributing to open source projects, or enjoying a good cup of coffee 
-                while planning my next big project.
+                I have a strong foundation in Python and Django for backend systems, paired with React for modern frontends. My highlight work includes deploying **Forex and Stock Market predictive models** using Machine Learning to simplify financial data for users.
               </p>
               
-              <Skills>
+              <SkillsWrapper>
                 {skills.map((skill, index) => (
-                  <Skill key={index}>{skill}</Skill>
+                  <SkillBadge key={index}>{skill}</SkillBadge>
                 ))}
-              </Skills>
+              </SkillsWrapper>
               
-              <DownloadButton>
+              <DownloadButton 
+                href="/Kevin_Mutai_CV.pdf" 
+                target="_blank"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
                 <Download size={20} />
-                Download Resume
+                View Resume
               </DownloadButton>
             </AboutText>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <StatsContainer>
+            <StatsGrid>
               {stats.map((stat, index) => (
-                <StatCard key={index}>
+                <StatCard 
+                  key={index}
+                  whileHover={{ y: -10 }}
+                  transition={{ type: 'spring', stiffness: 300 }}
+                >
                   <StatIcon>{stat.icon}</StatIcon>
                   <StatNumber>{stat.number}</StatNumber>
                   <StatLabel>{stat.label}</StatLabel>
                 </StatCard>
               ))}
-            </StatsContainer>
+            </StatsGrid>
           </motion.div>
         </AboutContent>
       </Container>

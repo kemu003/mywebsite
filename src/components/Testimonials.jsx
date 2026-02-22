@@ -3,9 +3,13 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { Star, Quote } from 'lucide-react';
 
+// ============================
+// 💅 Styled Components
+// ============================
 const TestimonialsSection = styled.section`
-  padding: 80px 0;
-  background: white;
+  padding: 100px 0;
+  background: #ffffff;
+  overflow: hidden;
 `;
 
 const Container = styled.div`
@@ -14,203 +18,178 @@ const Container = styled.div`
   padding: 0 20px;
 `;
 
+const HeaderBox = styled.div`
+  text-align: center;
+  margin-bottom: 4rem;
+`;
+
 const SectionTitle = styled.h2`
   font-size: 2.5rem;
-  font-weight: 700;
-  text-align: center;
+  font-weight: 800;
+  color: #111827;
   margin-bottom: 1rem;
-  color: #1f2937;
+  letter-spacing: -0.025em;
 `;
 
 const SectionSubtitle = styled.p`
-  text-align: center;
-  color: #6b7280;
+  color: #64748b;
   font-size: 1.1rem;
-  margin-bottom: 4rem;
   max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
 `;
 
 const TestimonialsGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 2rem;
-
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-  }
 `;
 
-const TestimonialCard = styled.div`
+const TestimonialCard = styled(motion.div)`
   background: #f8fafc;
-  padding: 2rem;
-  border-radius: 12px;
+  padding: 2.5rem;
+  border-radius: 20px;
+  border: 1px solid #f1f5f9;
   position: relative;
-  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: border-color 0.3s ease;
 
   &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-color: #6366f1;
+    background: #ffffff;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
   }
 `;
 
-const QuoteIcon = styled.div`
-  color: #6366f1;
-  margin-bottom: 1rem;
+const QuoteWrapper = styled.div`
+  color: #e2e8f0;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 0;
 `;
 
 const TestimonialText = styled.p`
-  color: #4b5563;
-  line-height: 1.8;
-  margin-bottom: 1.5rem;
-  font-style: italic;
+  color: #475569;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  position: relative;
+  z-index: 1;
 `;
 
-const ClientInfo = styled.div`
+const ClientProfile = styled.div`
   display: flex;
   align-items: center;
   gap: 1rem;
+  border-top: 1px solid #f1f5f9;
+  padding-top: 1.5rem;
 `;
 
-const ClientImage = styled.img`
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
+const Avatar = styled.img`
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
   object-fit: cover;
+  background: #e2e8f0;
 `;
 
-const ClientDetails = styled.div`
-  flex: 1;
+const Name = styled.h4`
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+  font-size: 1rem;
 `;
 
-const ClientName = styled.h4`
-  font-weight: 600;
-  color: #1f2937;
-  margin-bottom: 0.25rem;
+const Role = styled.p`
+  color: #94a3b8;
+  font-size: 0.85rem;
+  margin: 0;
 `;
 
-const ClientRole = styled.p`
-  color: #6b7280;
-  font-size: 0.9rem;
-`;
-
-const Rating = styled.div`
+const StarGroup = styled.div`
   display: flex;
-  gap: 0.25rem;
+  gap: 2px;
   color: #fbbf24;
+  margin-bottom: 1rem;
 `;
 
+// ============================
+// 🚀 Main Component
+// ============================
 const Testimonials = () => {
   const testimonials = [
     {
       id: 1,
-      text: "kevin delivered an exceptional e-commerce platform that exceeded our expectations. His attention to detail and technical expertise made the entire process smooth and efficient.",
-      client: {
-        name: "Sarah Johnson",
-        role: "CEO, TechStart Inc.",
-        image: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=200"
-      },
-      rating: 5
+      text: "Kevin delivered an exceptional e-commerce platform. His attention to detail and technical expertise in full-stack development made the entire process smooth.",
+      name: "Sarah Johnson",
+      role: "CEO, TechStart Inc.",
+      image: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=200"
     },
     {
       id: 2,
-      text: "Working with kevin was a game-changer for our business. He transformed our outdated website into a modern, responsive platform that our customers love.",
-      client: {
-        name: "Michael Chen",
-        role: "Founder, Digital Solutions",
-        image: "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=200"
-      },
-      rating: 5
+      text: "Working with Kevin was a game-changer. He transformed our outdated UI into a modern, responsive platform that our customers actually enjoy using.",
+      name: "Michael Chen",
+      role: "Founder, Digital Solutions",
+      image: "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=200"
     },
     {
       id: 3,
-      text: "kevin's mobile app development skills are outstanding. He created a user-friendly app that perfectly captures our brand identity and serves our customers effectively.",
-      client: {
-        name: "Emily Rodriguez",
-        role: "Marketing Director, FitLife",
-        image: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=200"
-      },
-      rating: 5
-    },
-    {
-      id: 4,
-      text: "Professional, reliable, and incredibly talented. kevin delivered our project on time and within budget. I highly recommend his services to anyone looking for quality development work.",
-      client: {
-        name: "David Thompson",
-        role: "CTO, InnovateCorp",
-        image: "https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=200"
-      },
-      rating: 5
-    },
-    {
-      id: 5,
-      text: "kevin's expertise in full-stack development helped us launch our startup successfully. His code is clean, scalable, and well-documented. Couldn't ask for better!",
-      client: {
-        name: "Lisa Wang",
-        role: "Product Manager, StartupXYZ",
-        image: "https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=200"
-      },
-      rating: 5
-    },
-    {
-      id: 6,
-      text: "The analytics dashboard kevin built for us has revolutionized how we track our business metrics. His understanding of both frontend and backend technologies is impressive.",
-      client: {
-        name: "Robert Kim",
-        role: "Data Analyst, MetricsPro",
-        image: "https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg?auto=compress&cs=tinysrgb&w=200"
-      },
-      rating: 5
+      text: "His mobile app development skills are outstanding. He created a user-friendly app that captures our brand identity perfectly and functions flawlessly.",
+      name: "Emily Rodriguez",
+      role: "Marketing Director, FitLife",
+      image: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=200"
     }
   ];
 
   return (
     <TestimonialsSection id="testimonials">
       <Container>
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <SectionTitle>Testimonials</SectionTitle>
-          <SectionSubtitle>
-            What my clients say about working with me
-          </SectionSubtitle>
-        </motion.div>
+        <HeaderBox>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <SectionTitle>Client Success Stories</SectionTitle>
+            <SectionSubtitle>
+              I take pride in delivering high-quality solutions. Here is what some of my previous collaborators have to say.
+            </SectionSubtitle>
+          </motion.div>
+        </HeaderBox>
 
         <TestimonialsGrid>
-          {testimonials.map((testimonial, index) => (
-            <motion.div
-              key={testimonial.id}
-              initial={{ opacity: 0, y: 50 }}
+          {testimonials.map((item, index) => (
+            <TestimonialCard
+              key={item.id}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
+              transition={{ duration: 0.5, delay: index * 0.15 }}
               viewport={{ once: true }}
             >
-              <TestimonialCard>
-                <QuoteIcon>
-                  <Quote size={32} />
-                </QuoteIcon>
-                <TestimonialText>"{testimonial.text}"</TestimonialText>
-                <ClientInfo>
-                  <ClientImage 
-                    src={testimonial.client.image} 
-                    alt={testimonial.client.name}
-                  />
-                  <ClientDetails>
-                    <ClientName>{testimonial.client.name}</ClientName>
-                    <ClientRole>{testimonial.client.role}</ClientRole>
-                  </ClientDetails>
-                  <Rating>
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} size={16} fill="currentColor" />
-                    ))}
-                  </Rating>
-                </ClientInfo>
-              </TestimonialCard>
-            </motion.div>
+              <QuoteWrapper>
+                <Quote size={48} />
+              </QuoteWrapper>
+
+              <div>
+                <StarGroup>
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} size={14} fill="currentColor" />
+                  ))}
+                </StarGroup>
+                <TestimonialText>"{item.text}"</TestimonialText>
+              </div>
+
+              <ClientProfile>
+                <Avatar src={item.image} alt={item.name} />
+                <div>
+                  <Name>{item.name}</Name>
+                  <Role>{item.role}</Role>
+                </div>
+              </ClientProfile>
+            </TestimonialCard>
           ))}
         </TestimonialsGrid>
       </Container>

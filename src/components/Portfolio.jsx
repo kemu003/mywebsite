@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, Filter } from 'lucide-react';
+import { ExternalLink, Github } from 'lucide-react';
 
 const PortfolioSection = styled.section`
   padding: 80px 0;
@@ -144,67 +144,47 @@ const Portfolio = () => {
   const projects = [
     {
       id: 1,
-      title: 'E-Commerce Platform',
-      description: 'A full-stack e-commerce solution with payment integration, inventory management, and admin dashboard.',
-      image: 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=800',
-      tech: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-      category: 'Web Development',
-      github: '#',
-      live: '#'
+      title: 'Stock Price Predictor (ML)',
+      description: 'An end-to-end Machine Learning application that forecasts stock market trends using Linear Regression and real-time Yahoo Finance data.',
+      image: 'https://images.pexels.com/photos/6770610/pexels-photo-6770610.jpeg?auto=compress&cs=tinysrgb&w=800',
+      tech: ['Python', 'Streamlit', 'Scikit-Learn', 'Plotly'],
+      category: 'Data Science & ML',
+      github: 'https://github.com/kemu003',
+      live: 'https://stock-prediction-ml-kevinmutai.streamlit.app/'
     },
     {
       id: 2,
-      title: 'Task Management App',
-      description: 'A collaborative task management application with real-time updates and team collaboration features.',
-      image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800',
-      tech: ['React Native', 'Firebase', 'Redux'],
-      category: 'Mobile Development',
-      github: '#',
-      live: '#'
+      title: 'Forex Price Predictor',
+      description: 'A specialized predictive model designed to analyze and forecast currency exchange rates for international markets.',
+      image: 'https://images.pexels.com/photos/186461/pexels-photo-186461.jpeg?auto=compress&cs=tinysrgb&w=800',
+      tech: ['Python', 'Pandas', 'Streamlit', 'ML'],
+      category: 'Data Science & ML',
+      github: 'https://github.com/kemu003',
+      live: 'https://forex-predictorke.streamlit.app/'
     },
     {
       id: 3,
-      title: 'Analytics Dashboard',
-      description: 'A comprehensive analytics dashboard with data visualization and reporting capabilities.',
+      title: 'Rapstar Investment Platform',
+      description: 'A modern, responsive frontend for an investment portal, optimized for cross-device performance and user interaction.',
       image: 'https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&cs=tinysrgb&w=800',
-      tech: ['Vue.js', 'D3.js', 'Python', 'PostgreSQL'],
+      tech: ['React.js', 'Styled-Components', 'JavaScript'],
       category: 'Web Development',
-      github: '#',
-      live: '#'
+      github: 'https://github.com/kemu003',
+      live: 'https://rapstarinvestment.com'
     },
     {
       id: 4,
-      title: 'Social Media App',
-      description: 'A social networking mobile application with real-time messaging and content sharing.',
-      image: 'https://images.pexels.com/photos/267350/pexels-photo-267350.jpeg?auto=compress&cs=tinysrgb&w=800',
-      tech: ['React Native', 'Node.js', 'Socket.io'],
-      category: 'Mobile Development',
-      github: '#',
-      live: '#'
-    },
-    {
-      id: 5,
-      title: 'Restaurant Website',
-      description: 'A modern restaurant website with online ordering system and reservation management.',
-      image: 'https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg?auto=compress&cs=tinysrgb&w=800',
-      tech: ['HTML', 'CSS', 'JavaScript', 'PHP'],
-      category: 'UI/UX Design',
-      github: '#',
-      live: '#'
-    },
-    {
-      id: 6,
-      title: 'Fitness Tracker',
-      description: 'A comprehensive fitness tracking application with workout plans and progress monitoring.',
-      image: 'https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg?auto=compress&cs=tinysrgb&w=800',
-      tech: ['Flutter', 'Firebase', 'Charts'],
-      category: 'Mobile Development',
+      title: 'ICT Infrastructure Management',
+      description: 'Supported the digitization and technical maintenance of government systems during my tenure at Bomet County.',
+      image: 'https://images.pexels.com/photos/443383/pexels-photo-443383.jpeg?auto=compress&cs=tinysrgb&w=800',
+      tech: ['Hardware Diagnostics', 'Networking', 'System Integration'],
+      category: 'ICT Support',
       github: '#',
       live: '#'
     }
   ];
 
-  const categories = ['All', 'Web Development', 'Mobile Development', 'UI/UX Design'];
+  const categories = ['All', 'Web Development', 'Data Science & ML', 'ICT Support'];
 
   const filteredProjects = activeFilter === 'All' 
     ? projects 
@@ -219,9 +199,9 @@ const Portfolio = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <SectionTitle>Portfolio</SectionTitle>
+          <SectionTitle>My Work</SectionTitle>
           <SectionSubtitle>
-            A showcase of my recent work and creative projects
+            Bridging the gap between Software Engineering and Data Science through practical, high-impact projects.
           </SectionSubtitle>
         </motion.div>
 
@@ -257,11 +237,11 @@ const Portfolio = () => {
                     ))}
                   </ProjectTech>
                   <ProjectLinks>
-                    <ProjectLink href={project.github}>
+                    <ProjectLink href={project.github} target="_blank" rel="noopener noreferrer">
                       <Github size={16} />
                       Code
                     </ProjectLink>
-                    <ProjectLink href={project.live}>
+                    <ProjectLink href={project.live} target="_blank" rel="noopener noreferrer">
                       <ExternalLink size={16} />
                       Live Demo
                     </ProjectLink>
